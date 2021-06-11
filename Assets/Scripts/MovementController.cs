@@ -10,16 +10,19 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private GameObject camera;
 
+    private UIManager uiManager;
     private Room[] adjacentRooms;
 
     private void Awake()
     {
+        uiManager = FindObjectOfType<UIManager>();
         SetAdjacent();
     }
 
     private void SetAdjacent()
     {
         adjacentRooms = currentRoom.getAdjacent();
+        uiManager.UIChange(getAdjacentNames());
     }
 
     public void Move(int i)
@@ -54,5 +57,27 @@ public class MovementController : MonoBehaviour
         {
             Move(3);
         }
+    }
+
+    public string getAdjacentNames()
+    {
+        string Left = "", Right = "", Forward = "", Back = "";
+        if(adjacentRooms[0] != null)
+        {
+            Left = adjacentRooms[0].getName();
+        }
+        if (adjacentRooms[1] != null)
+        {
+            Right = adjacentRooms[1].getName();
+        }
+        if (adjacentRooms[2] != null)
+        {
+            Forward = adjacentRooms[2].getName();
+        }
+        if (adjacentRooms[3] != null)
+        {
+            Back = adjacentRooms[3].getName();
+        }
+        return Left + "," + Right + "," + Forward + "," + Back;
     }
 }
