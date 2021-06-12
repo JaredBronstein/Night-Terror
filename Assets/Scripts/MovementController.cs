@@ -80,4 +80,9 @@ public class MovementController : MonoBehaviour
         }
         return Left + "," + Right + "," + Forward + "," + Back;
     }
+
+    public Room getCurrentRoom()
+    {
+        return currentRoom;
+    }
 }
