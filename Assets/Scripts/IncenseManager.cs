@@ -24,7 +24,7 @@ public class IncenseManager : MonoBehaviour
     private void UseIncense()
     {
         Room CurrentRoom = movementController.getCurrentRoom();
-        if(CurrentRoom.getCanUseIncense())
+        if(CurrentRoom.getIsMarked())
         {
             if(CurrentRoom.getHasIncense())
             {

@@ -18,9 +18,10 @@ public class Room : MonoBehaviour
     private Room[] adjacentRooms = new Room[4];
 
     [SerializeField]
-    private bool canUseIncense;
+    private bool isMarked;
 
     private bool HasIncense = false;
+    private bool IsHunted = false;
 
     private void Awake()
     {
@@ -45,9 +46,9 @@ public class Room : MonoBehaviour
         return name;
     }
 
-    public bool getCanUseIncense()
+    public bool getIsMarked()
     {
-        return canUseIncense;
+        return isMarked;
     }
 
     public bool getHasIncense()
@@ -66,5 +67,11 @@ public class Room : MonoBehaviour
         {
             incenseSprite.GetComponent<SpriteRenderer>().enabled = false;
         }
+    }
+
+    public void setIsHunted(bool newValue)
+    {
+        IsHunted = newValue;
+        Debug.Log(name + " has had it's IsHunted value change to " + newValue);
     }
 }

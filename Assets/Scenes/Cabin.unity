@@ -158,7 +158,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 1407566870}
-  canUseIncense: 0
+  isMarked: 0
 --- !u!212 &14999821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 671670116}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &77582033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1163356167}
   - {fileID: 2073498348}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &285674626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 1407566870}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &539130650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1271,7 +1271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663094706
 GameObject:
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   - {fileID: 77582032}
   - {fileID: 0}
   - {fileID: 0}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &663094708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   - {fileID: 77582032}
   - {fileID: 1683585479}
   - {fileID: 285674625}
-  canUseIncense: 0
+  isMarked: 0
 --- !u!212 &671670117
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1709,7 +1709,7 @@ Transform:
   - {fileID: 2073498350}
   - {fileID: 285674624}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &856472263
 GameObject:
@@ -1749,7 +1749,7 @@ MonoBehaviour:
   - {fileID: 1683585479}
   - {fileID: 0}
   - {fileID: 890871778}
-  canUseIncense: 0
+  isMarked: 0
 --- !u!212 &856472265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   - {fileID: 671670116}
   - {fileID: 856472264}
   - {fileID: 0}
-  canUseIncense: 0
+  isMarked: 0
 --- !u!212 &890871779
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2378,7 +2378,7 @@ MonoBehaviour:
   - {fileID: 285674625}
   - {fileID: 0}
   - {fileID: 0}
-  canUseIncense: 0
+  isMarked: 0
 --- !u!212 &1163356168
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2503,6 +2503,53 @@ Transform:
   m_Father: {fileID: 14999822}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1177046391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177046392}
+  - component: {fileID: 1177046393}
+  m_Layer: 0
+  m_Name: SkinwalkerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177046392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177046391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177046393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177046391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea0ffeb06ed2b143927f0e34999ce01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleTime: 5
+  huntTime: 3
+  damagePerSecond: 0
+  audioDelay: 0
 --- !u!1 &1217392006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,7 +2639,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1255369270
 MonoBehaviour:
@@ -2802,7 +2849,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2073498348}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &1346027739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2935,7 +2982,7 @@ MonoBehaviour:
   - {fileID: 14999820}
   - {fileID: 1683585479}
   - {fileID: 0}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &1407566871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3038,7 +3085,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 856472264}
   - {fileID: 890871778}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &1494183094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3267,7 +3314,7 @@ MonoBehaviour:
   - {fileID: 1407566870}
   - {fileID: 1743352493}
   - {fileID: 671670116}
-  canUseIncense: 1
+  isMarked: 1
 --- !u!212 &1683585480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3433,7 +3480,7 @@ MonoBehaviour:
   - {fileID: 2073498348}
   - {fileID: 1683585479}
   - {fileID: 0}
-  canUseIncense: 0
+  isMarked: 0
 --- !u!212 &1743352494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3623,7 +3670,7 @@ RectTransform:
   - {fileID: 1699401291}
   - {fileID: 16796758}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3823,7 +3870,7 @@ MonoBehaviour:
   - {fileID: 1346027738}
   - {fileID: 0}
   - {fileID: 285674625}
-  canUseIncense: 0
+  isMarked: 0
 --- !u!212 &2073498349
 SpriteRenderer:
   m_ObjectHideFlags: 0
