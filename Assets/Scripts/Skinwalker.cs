@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Skinwalker : MonoBehaviour
 {
-    [SerializeField]
-    private float idleTime = 5.0f, huntTime, damagePerSecond, audioDelay;
+    private static float idleTime = 3.0f, huntTime = 3.0f, damagePerSecond = 3.0f, audioDelay;
 
 
     private enum SkinwalkerState {Idle, Search, Hunt};
@@ -96,5 +95,10 @@ public class Skinwalker : MonoBehaviour
     public void AddRoom()
     {
 
+    }
+
+    public static float getDamagePerSecond()
+    {
+        return damagePerSecond;
     }
 }

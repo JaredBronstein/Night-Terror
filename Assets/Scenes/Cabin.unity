@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1407566870}
   isMarked: 0
+  roomHealth: 100
 --- !u!212 &14999821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -357,6 +358,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 671670116}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &77582033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -648,6 +650,7 @@ MonoBehaviour:
   - {fileID: 1163356167}
   - {fileID: 2073498348}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &285674626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1113,6 +1116,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1407566870}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &539130650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1312,6 +1316,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &663094708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1430,6 +1435,7 @@ MonoBehaviour:
   - {fileID: 1683585479}
   - {fileID: 285674625}
   isMarked: 0
+  roomHealth: 100
 --- !u!212 &671670117
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1750,6 +1756,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 890871778}
   isMarked: 0
+  roomHealth: 100
 --- !u!212 &856472265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1867,6 +1874,7 @@ MonoBehaviour:
   - {fileID: 856472264}
   - {fileID: 0}
   isMarked: 0
+  roomHealth: 100
 --- !u!212 &890871779
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2379,6 +2387,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isMarked: 0
+  roomHealth: 100
 --- !u!212 &1163356168
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2546,10 +2555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea0ffeb06ed2b143927f0e34999ce01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleTime: 5
-  huntTime: 3
-  damagePerSecond: 0
-  audioDelay: 0
 --- !u!1 &1217392006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,6 +2855,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2073498348}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &1346027739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2983,6 +2989,7 @@ MonoBehaviour:
   - {fileID: 1683585479}
   - {fileID: 0}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &1407566871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3086,6 +3093,7 @@ MonoBehaviour:
   - {fileID: 856472264}
   - {fileID: 890871778}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &1494183094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3315,6 +3323,7 @@ MonoBehaviour:
   - {fileID: 1743352493}
   - {fileID: 671670116}
   isMarked: 1
+  roomHealth: 100
 --- !u!212 &1683585480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3481,6 +3490,7 @@ MonoBehaviour:
   - {fileID: 1683585479}
   - {fileID: 0}
   isMarked: 0
+  roomHealth: 100
 --- !u!212 &1743352494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3871,6 +3881,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 285674625}
   isMarked: 0
+  roomHealth: 100
 --- !u!212 &2073498349
 SpriteRenderer:
   m_ObjectHideFlags: 0

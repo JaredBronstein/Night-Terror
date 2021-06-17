@@ -20,6 +20,9 @@ public class Room : MonoBehaviour
     [SerializeField]
     private bool isMarked;
 
+    [SerializeField]
+    private float roomHealth = 100;
+
     private bool HasIncense = false;
     private bool IsHunted = false;
 
@@ -28,6 +31,18 @@ public class Room : MonoBehaviour
         if(incenseSprite != null)
         {
             incenseSprite.GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
+    private void Update()
+    {
+        if(roomHealth <= 0)
+        {
+            Debug.Log(name + " has been breached, game over!");
+        }
+        else if(IsHunted)
+        {
+            roomHealth -= Skinwalker.getDamagePerSecond() * Time.deltaTime;
         }
     }
 
@@ -72,6 +87,13 @@ public class Room : MonoBehaviour
     public void setIsHunted(bool newValue)
     {
         IsHunted = newValue;
-        Debug.Log(name + " has had it's IsHunted value change to " + newValue);
+        if (newValue)
+            Debug.Log(name + " has been targeted.");
+        else
+        {
+            roomHealth = Mathf.Round(roomHealth * 100) / 100;
+            Debug.Log(name + " is now safe, but it's HP is at " + roomHealth);
+        }
+
     }
 }
