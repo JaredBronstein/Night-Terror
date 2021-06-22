@@ -15,7 +15,7 @@ public class IncenseManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Use"))
+        if(Input.GetButtonDown("Jump"))
         {
             UseIncense();
         }

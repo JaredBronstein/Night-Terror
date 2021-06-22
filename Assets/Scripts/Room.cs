@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Room : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class Room : MonoBehaviour
         if(roomHealth <= 0)
         {
             Debug.Log(name + " has been breached, game over!");
+            SceneManager.LoadScene("MainMenu");
         }
         else if(IsHunted)
         {

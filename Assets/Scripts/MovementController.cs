@@ -41,19 +41,19 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Left"))
+        if(Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") == -1)
         {
             Move(0);
         }
-        else if (Input.GetButtonDown("Right"))
+        else if (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") == 1)
         {
             Move(1);
         }
-        else if (Input.GetButtonDown("Up"))
+        else if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") == 1)
         {
             Move(2);
         }
-        else if (Input.GetButtonDown("Down"))
+        else if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") == -1)
         {
             Move(3);
         }

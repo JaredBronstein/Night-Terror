@@ -20,7 +20,7 @@ public class Interact : MonoBehaviour
     {
         if (collisionObject != null)
         {
-            if (Input.GetButtonDown("Mouse") && collisionObject.tag == "Interactable")
+            if (Input.GetButtonDown("Fire1") && collisionObject.tag == "Interactable")
             {
                 Debug.Log(collisionObject.name + " has been interacted with.");
             }

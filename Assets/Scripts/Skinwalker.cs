@@ -16,6 +16,7 @@ public class Skinwalker : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log(idleTime + "," + huntTime + "," + damagePerSecond + "," + audioDelay);
         Rooms = FindObjectsOfType<Room>();
         int roomNbr = 0, size = Random.Range(0, Rooms.Length);
         foreach(Room room in Rooms)
@@ -100,5 +101,13 @@ public class Skinwalker : MonoBehaviour
     public static float getDamagePerSecond()
     {
         return damagePerSecond;
+    }
+
+    public static void setPresets(float IdleTime, float HuntTime, float DamagePerSecond, float AudioDelay)
+    {
+        idleTime = IdleTime;
+        huntTime = HuntTime;
+        damagePerSecond = DamagePerSecond;
+        audioDelay = AudioDelay;
     }
 }
