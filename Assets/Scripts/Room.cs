@@ -27,7 +27,7 @@ public class Room : MonoBehaviour
     private bool HasIncense = false;
     private bool IsHunted = false;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if(incenseSprite != null)
         {
@@ -35,7 +35,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(roomHealth <= 0)
         {
@@ -68,6 +68,11 @@ public class Room : MonoBehaviour
         return isMarked;
     }
 
+    public void setIsMarked(bool IsMarked)
+    {
+        isMarked = IsMarked;
+    }
+
     public bool getHasIncense()
     {
         return HasIncense;
@@ -86,6 +91,11 @@ public class Room : MonoBehaviour
         }
     }
 
+    public bool getIsHunted()
+    {
+        return IsHunted;
+    }
+
     public void setIsHunted(bool newValue)
     {
         IsHunted = newValue;
@@ -96,6 +106,5 @@ public class Room : MonoBehaviour
             roomHealth = Mathf.Round(roomHealth * 100) / 100;
             Debug.Log(name + " is now safe, but it's HP is at " + roomHealth);
         }
-
     }
 }

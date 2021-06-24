@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Skinwalker : MonoBehaviour
 {
-    private static float idleTime = 3.0f, huntTime = 3.0f, damagePerSecond = 3.0f, audioDelay;
+    private static float idleTime = 3.0f, huntTime = 3.0f, damagePerSecond = 3.0f, damageMultiplier = 1.0f, audioDelay;
 
 
     private enum SkinwalkerState {Idle, Search, Hunt};
@@ -93,14 +93,17 @@ public class Skinwalker : MonoBehaviour
     /// <summary>
     /// Used to add the fireplace when mechanic is added
     /// </summary>
-    public void AddRoom()
+    public void AddRoom(Room roomtoAdd, int numberOfAdditions)
     {
-
+        for(int i = 0; i < numberOfAdditions; i++)
+        {
+            MarkedRooms.Add(roomtoAdd);
+        }
     }
 
     public static float getDamagePerSecond()
     {
-        return damagePerSecond;
+        return damagePerSecond * damageMultiplier;
     }
 
     public static void setPresets(float IdleTime, float HuntTime, float DamagePerSecond, float AudioDelay)
@@ -109,5 +112,10 @@ public class Skinwalker : MonoBehaviour
         huntTime = HuntTime;
         damagePerSecond = DamagePerSecond;
         audioDelay = AudioDelay;
+    }
+
+    public static void setMultiplier(float multiplier)
+    {
+        damageMultiplier = multiplier;
     }
 }

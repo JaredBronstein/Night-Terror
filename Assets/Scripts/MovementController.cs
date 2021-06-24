@@ -25,11 +25,11 @@ public class MovementController : MonoBehaviour
         uiManager.UIChange(getAdjacentNames());
     }
 
-    public void Move(int i)
+    public void Move(Room room)
     {
-        if(adjacentRooms[i] != null)
+        if(room != null)
         {
-            currentRoom = adjacentRooms[i];
+            currentRoom = room;
             SetAdjacent();
             camera.transform.position = currentRoom.getCameraPosition().position;
         }
@@ -43,19 +43,19 @@ public class MovementController : MonoBehaviour
     {
         if(Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") == -1)
         {
-            Move(0);
+            Move(adjacentRooms[0]);
         }
         else if (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") == 1)
         {
-            Move(1);
+            Move(adjacentRooms[1]);
         }
         else if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") == 1)
         {
-            Move(2);
+            Move(adjacentRooms[2]);
         }
         else if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") == -1)
         {
-            Move(3);
+            Move(adjacentRooms[3]);
         }
     }
 

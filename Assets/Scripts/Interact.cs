@@ -22,7 +22,7 @@ public class Interact : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1") && collisionObject.tag == "Interactable")
             {
-                Debug.Log(collisionObject.name + " has been interacted with.");
+                collisionObject.GetComponent<InteractiveObject>().Interact();
             }
         }
     }
