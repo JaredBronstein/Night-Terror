@@ -12,6 +12,7 @@ public class MovementController : MonoBehaviour
 
     private UIManager uiManager;
     private Room[] adjacentRooms;
+    private bool CanMove = true;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class MovementController : MonoBehaviour
 
     public void Move(Room room)
     {
-        if(room != null)
+        if(room != null && CanMove)
         {
             currentRoom = room;
             SetAdjacent();
@@ -84,5 +85,10 @@ public class MovementController : MonoBehaviour
     public Room getCurrentRoom()
     {
         return currentRoom;
+    }
+
+    public void setCanMove(bool newValue)
+    {
+        CanMove = newValue;
     }
 }
