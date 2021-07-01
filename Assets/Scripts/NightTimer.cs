@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Simply keeps track of the length of the night and ends it when the timer hits zero
+/// </summary>
 public class NightTimer : MonoBehaviour
 {
     [SerializeField]

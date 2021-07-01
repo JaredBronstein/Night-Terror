@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Primary Room class used by most classes to function
+/// </summary>
 public class Room : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("The position the camera is in to see the room")]
     private Transform cameraPosition;
 
     [SerializeField]
@@ -14,8 +18,8 @@ public class Room : MonoBehaviour
     [SerializeField]
     private string name;
 
-    [Tooltip("Group of Adjacent Rooms, goes Left, Right, Forward, Back")]
     [SerializeField]
+    [Tooltip("Group of Adjacent Rooms, goes Left, Right, Forward, Back")]
     private Room[] adjacentRooms = new Room[4];
 
     [SerializeField]
@@ -27,6 +31,9 @@ public class Room : MonoBehaviour
     private bool HasIncense = false;
     protected bool IsHunted = false;
 
+    /// <summary>
+    /// Disables the Incense Sprite
+    /// </summary>
     protected virtual void Awake()
     {
         if(incenseSprite != null)
@@ -35,6 +42,9 @@ public class Room : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if it's health is at or below zero for a game over or if it needs to lose health for being hunted
+    /// </summary>
     protected virtual void Update()
     { 
         if(roomHealth <= 0)
@@ -78,6 +88,10 @@ public class Room : MonoBehaviour
         return HasIncense;
     }
 
+    /// <summary>
+    /// Used when the player takes or places down incense in this room
+    /// </summary>
+    /// <param name="newValue">Whether the Incense Manager has determined it's giving or taking incense</param>
     public void setHasIncense(bool newValue)
     {
         HasIncense = newValue;
@@ -96,6 +110,9 @@ public class Room : MonoBehaviour
         return IsHunted;
     }
 
+    /// <summary>
+    /// Used by the Skinwalker Class to target or de-target rooms.
+    /// </summary>
     public virtual void setIsHunted(bool newValue)
     {
         IsHunted = newValue;

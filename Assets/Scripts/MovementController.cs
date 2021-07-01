@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages player movement in it's entirety
+/// </summary>
 public class MovementController : MonoBehaviour
 {
+    //Set initially as starting room, gets overwritten from there
     [SerializeField]
     private Room currentRoom;
 
@@ -13,7 +17,7 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private Animator cameraFadeAnimator;
 
-    private Interact interact;
+    private InteractManager interactManager;
     private UIManager uiManager;
     private Room[] adjacentRooms;
     private bool CanMove = true;
@@ -21,16 +25,24 @@ public class MovementController : MonoBehaviour
     private void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
-        interact = FindObjectOfType<Interact>();
+        interactManager = FindObjectOfType<InteractManager>();
         SetAdjacent();
     }
 
+    /// <summary>
+    /// Sets adjacent rooms based on the current room and adjusts UI to reflect that
+    /// </summary>
     private void SetAdjacent()
     {
         adjacentRooms = currentRoom.getAdjacent();
         uiManager.UIChange(getAdjacentNames());
     }
 
+    /// <summary>
+    /// Attempts to move to a different room regardless of being adjacent or not. Called by certain interactive
+    /// objects as well as Update when the player inputs certain keys
+    /// </summary>
+    /// <param name="room">The Room to move to</param>
     public void Move(Room room)
     {
         if(room != null && CanMove)
@@ -43,9 +55,14 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Disables interactivity, starts fade out animation, changes room, starts fade in animation, enables interactivity
+    /// </summary>
+    /// <param name="room">Room to move to passed from Move</param>
+    /// <returns></returns>
     private IEnumerator CameraFade(Room room)
     {
-        interact.setCanInteract(false);
+        interactManager.setCanInteract(false);
         cameraFadeAnimator.SetBool("IsDark", true);
         yield return new WaitForSeconds(1.0f);
         currentRoom = room;
@@ -53,9 +70,12 @@ public class MovementController : MonoBehaviour
         camera.transform.position = currentRoom.getCameraPosition().position;
         cameraFadeAnimator.SetBool("IsDark", false);
         yield return new WaitForSeconds(0.7f);
-        interact.setCanInteract(true);
+        interactManager.setCanInteract(true);
     }
 
+    /// <summary>
+    /// Checks for player inputs for room moving
+    /// </summary>
     private void Update()
     {
         if(Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") == -1)
@@ -76,6 +96,10 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Used by the UI to display adjacent room names
+    /// </summary>
+    /// <returns>Returns as a string of four characters split by commas. The UI Manager splits it from there</returns>
     public string getAdjacentNames()
     {
         string Left = "", Right = "", Forward = "", Back = "";

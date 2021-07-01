@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Used by the Main Menu to determine what presets the Skinwalker should start on based on the night selected
+/// </summary>
 public class NightManager : MonoBehaviour
 {
     public void NightOne()

@@ -21,6 +21,10 @@ public class IncenseManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Grabs the current room, checks if it's marked and then if it has the incense already, take it, if it doesn't remove it
+    /// from inventory, and if there is no incense in the inventory, say you can't. If it's not marked, say it can't be used
+    /// </summary>
     private void UseIncense()
     {
         Room CurrentRoom = movementController.getCurrentRoom();

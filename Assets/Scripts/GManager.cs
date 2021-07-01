@@ -10,10 +10,10 @@ public class GManager : MonoBehaviour
 {
 
     [SerializeField]
-    private Slider GeneratorPosition;
+    private Slider GeneratorPressureDial;
 
     [SerializeField]
-    private int stableSize, resetDelay;
+    private int stabilitySize, resetDelay;
 
     [SerializeField]
     private float maxTime;
@@ -23,15 +23,21 @@ public class GManager : MonoBehaviour
     private float currentTime;
     private bool isUIActive = false, isGeneratorActive = true;
 
+    /// <summary>
+    /// Sets time to max, grabs Slider and Movement controller, then disables the Ui and resets the new correct slider position
+    /// </summary>
     private void Awake()
     {
         currentTime = maxTime;
         movementController = FindObjectOfType<MovementController>();
-        GeneratorPosition = FindObjectOfType<Slider>();
+        GeneratorPressureDial = FindObjectOfType<Slider>();
         DisableUI(true);
         ResetPosition();
     }
 
+    /// <summary>
+    /// Ticks down the generator clock and will disable the UI if it's active and the player cancels
+    /// </summary>
     private void Update()
     {
         if(currentTime > 0)
@@ -49,19 +55,25 @@ public class GManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Delay so that it waits before reseting the correct slider position
+    /// </summary>
     private IEnumerator ResetPositionDelay()
     {
         yield return new WaitForSeconds(resetDelay);
         ResetPosition();
     }
     
+    /// <summary>
+    /// Resets the slider position so it isn't where the slider currently is
+    /// </summary>
     private void ResetPosition()
     {
         do
         {
-            minValue = (int)Random.Range(GeneratorPosition.minValue, GeneratorPosition.maxValue - stableSize);
-            maxValue = minValue + stableSize;
-        }while (GeneratorPosition.value < maxValue && GeneratorPosition.value > minValue) ;
+            minValue = (int)Random.Range(GeneratorPressureDial.minValue, GeneratorPressureDial.maxValue - stabilitySize);
+            maxValue = minValue + stabilitySize;
+        }while (GeneratorPressureDial.value < maxValue && GeneratorPressureDial.value > minValue) ;
         Debug.Log("Generator Range is " + minValue + ", " + maxValue);
     }
 
@@ -69,7 +81,7 @@ public class GManager : MonoBehaviour
     {
         isUIActive = false;
         movementController.setCanMove(true);
-        GeneratorPosition.gameObject.transform.localScale = new Vector3(0, 0, 0);
+        GeneratorPressureDial.gameObject.transform.localScale = new Vector3(0, 0, 0);
         if(!isFirst)
             StartCoroutine(ResetPositionDelay());
     }
@@ -79,12 +91,15 @@ public class GManager : MonoBehaviour
         StopCoroutine(ResetPositionDelay());
         isUIActive = true;
         movementController.setCanMove(false);
-        GeneratorPosition.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        GeneratorPressureDial.gameObject.transform.localScale = new Vector3(1, 1, 1);
     }
 
+    /// <summary>
+    /// Called by the Slider whenever it's moved. If it's in the correct zone, restore power to max
+    /// </summary>
     public void SliderChange()
     {
-        if (isUIActive && GeneratorPosition.value >= minValue && GeneratorPosition.value <= maxValue)
+        if (isUIActive && GeneratorPressureDial.value >= minValue && GeneratorPressureDial.value <= maxValue)
         {
             Debug.Log("Generator has been restored!");
             currentTime = maxTime;

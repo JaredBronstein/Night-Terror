@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Interactive object in the living room that will lead to the Fireplace "Room"
+/// </summary>
 public class FireplaceAccess : InteractiveObject
 {
-
     [SerializeField]
     private Room fireplace;
 

@@ -21,6 +21,10 @@ public class Fireplace : InteractiveObject
         StartCoroutine(fuelTime());
     }
 
+    /// <summary>
+    /// Constantly ticks down the fuel time. Can't be a void method since it doesn't actually wait.
+    /// When time is up, fire goes out, and the fireplace is added to the Skinwalker's list
+    /// </summary>
     private IEnumerator fuelTime()
     {
         while(currentTime > 0)
@@ -33,6 +37,10 @@ public class Fireplace : InteractiveObject
         skinwalker.AddRoom(fireplace, 3);
     }
 
+    /// <summary>
+    /// Overrides the interact function to add fuel, state the fire's out and thus cannot relight, or state you
+    /// have no fuel
+    /// </summary>
     public override void Interact()
     {
         if(hasFuel && currentTime > 0)
@@ -51,6 +59,9 @@ public class Fireplace : InteractiveObject
         }
     }
 
+    /// <summary>
+    /// Used by the woodpile InteractiveObject class so the HasFuel bool stays in just the fireplace class
+    /// </summary>
     public void addFuel()
     {
         hasFuel = true;

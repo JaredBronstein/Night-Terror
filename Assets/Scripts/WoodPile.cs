@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Interactive Object in the Game Room used to acquire wood to burn in the fireplace
+/// </summary>
 public class WoodPile : InteractiveObject
 {
     private Fireplace fireplace;

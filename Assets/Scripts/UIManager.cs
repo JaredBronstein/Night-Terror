@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the UI that shows the adjacent rooms on the screen
+/// </summary>
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
