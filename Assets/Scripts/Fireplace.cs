@@ -29,17 +29,21 @@ public class Fireplace : InteractiveObject
             currentTime--;
         }
         Debug.Log("Fire is out");
-        fireplace.setIsHunted(true);
+        fireplace.setIsMarked(true);
         skinwalker.AddRoom(fireplace, 3);
     }
 
     public override void Interact()
     {
-        if(hasFuel)
+        if(hasFuel && currentTime > 0)
         {
             Debug.Log("More fuel for the fire");
             hasFuel = false;
             currentTime = maxTime;
+        }
+        else if(currentTime <= 0)
+        {
+            Debug.Log("Fire's out, you cannot relight it.");
         }
         else
         {

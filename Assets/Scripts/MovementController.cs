@@ -10,6 +10,10 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private GameObject camera;
 
+    [SerializeField]
+    private Animator cameraFadeAnimator;
+
+    private Interact interact;
     private UIManager uiManager;
     private Room[] adjacentRooms;
     private bool CanMove = true;
@@ -17,6 +21,7 @@ public class MovementController : MonoBehaviour
     private void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
+        interact = FindObjectOfType<Interact>();
         SetAdjacent();
     }
 
@@ -30,14 +35,25 @@ public class MovementController : MonoBehaviour
     {
         if(room != null && CanMove)
         {
-            currentRoom = room;
-            SetAdjacent();
-            camera.transform.position = currentRoom.getCameraPosition().position;
+            StartCoroutine(CameraFade(room));
         }
         else
         {
             Debug.Log("There is no room in this direction");
         }
+    }
+
+    private IEnumerator CameraFade(Room room)
+    {
+        interact.setCanInteract(false);
+        cameraFadeAnimator.SetBool("IsDark", true);
+        yield return new WaitForSeconds(1.0f);
+        currentRoom = room;
+        SetAdjacent();
+        camera.transform.position = currentRoom.getCameraPosition().position;
+        cameraFadeAnimator.SetBool("IsDark", false);
+        yield return new WaitForSeconds(0.7f);
+        interact.setCanInteract(true);
     }
 
     private void Update()

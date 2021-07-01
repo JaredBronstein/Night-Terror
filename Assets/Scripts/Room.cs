@@ -25,7 +25,7 @@ public class Room : MonoBehaviour
     private float roomHealth = 100;
 
     private bool HasIncense = false;
-    private bool IsHunted = false;
+    protected bool IsHunted = false;
 
     protected virtual void Awake()
     {
@@ -36,7 +36,7 @@ public class Room : MonoBehaviour
     }
 
     protected virtual void Update()
-    {
+    { 
         if(roomHealth <= 0)
         {
             Debug.Log(name + " has been breached, game over!");
@@ -96,7 +96,7 @@ public class Room : MonoBehaviour
         return IsHunted;
     }
 
-    public void setIsHunted(bool newValue)
+    public virtual void setIsHunted(bool newValue)
     {
         IsHunted = newValue;
         if (newValue)

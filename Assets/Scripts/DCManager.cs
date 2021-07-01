@@ -17,8 +17,7 @@ public class DCManager : MonoBehaviour
     private GameObject groundedSprite;
 
     private Skinwalker skinwalker;
-    private bool isActive = true;
-    private float InactiveDamage = 1.5f, ActiveDamage = 1.0f;
+    private float InactiveDamage = 2.0f, ActiveDamage = 1.0f;
 
     private void Awake()
     {
@@ -29,22 +28,16 @@ public class DCManager : MonoBehaviour
         skinwalker.AddRoom(dcRoom, 2);
     }
 
-    private void Update()
+    public void Deactivate()
     {
-        if(dcRoom.getIsHunted())
-        {
-            dcRoom.setHasIncense(true);
-            isActive = false;
-            Skinwalker.setMultiplier(InactiveDamage);
-            hangingSprite.enabled = false;
-            groundedSprite.GetComponent<SpriteRenderer>().enabled = true;
-            groundedSprite.GetComponent<BoxCollider2D>().enabled = true;
-        }
+        Skinwalker.setMultiplier(InactiveDamage);
+        hangingSprite.enabled = false;
+        groundedSprite.GetComponent<SpriteRenderer>().enabled = true;
+        groundedSprite.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public void Reactivate()
     {
-        isActive = true;
         Skinwalker.setMultiplier(ActiveDamage);
         hangingSprite.enabled = true;
         groundedSprite.GetComponent<SpriteRenderer>().enabled = false;

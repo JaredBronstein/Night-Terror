@@ -6,6 +6,8 @@ public class Skinwalker : MonoBehaviour
 {
     private static float idleTime = 3.0f, huntTime = 3.0f, damagePerSecond = 3.0f, damageMultiplier = 1.0f, audioDelay;
 
+    [SerializeField]
+    private float variableRange = 1.5f;
 
     private enum SkinwalkerState {Idle, Search, Hunt};
     private SkinwalkerState skinwalkerState = SkinwalkerState.Idle;
@@ -35,7 +37,7 @@ public class Skinwalker : MonoBehaviour
         }
         StartCoroutine(Idle());
     }
-    //Must modify, prevent the Coroutine from being started multiple times due to being in Update. Maybe have Idle called once and then lead into later methods?
+
     private void Update()
     {
          if (skinwalkerState == SkinwalkerState.Hunt)
@@ -58,7 +60,7 @@ public class Skinwalker : MonoBehaviour
 
     private IEnumerator Idle()
     {
-        yield return new WaitForSeconds(idleTime);
+        yield return new WaitForSeconds(idleTime + Random.Range(-variableRange, variableRange));
         skinwalkerState = SkinwalkerState.Search;
         Search();
     }
@@ -69,7 +71,14 @@ public class Skinwalker : MonoBehaviour
         target = MarkedRooms[choice];
         target.setIsHunted(true);
         skinwalkerState = SkinwalkerState.Hunt;
-        Hunt();
+        if(target is DreamCatcherRoom)
+        {
+            Reset();
+        }
+        else
+        {
+            Hunt();
+        }
     }
 
     private void Hunt()
@@ -79,11 +88,11 @@ public class Skinwalker : MonoBehaviour
 
     private IEnumerator RoomTimeout()
     {
-        yield return new WaitForSeconds(huntTime);
+        yield return new WaitForSeconds(huntTime + Random.Range(-variableRange, variableRange));
         Reset();
     }
 
-    private void Reset()
+    public void Reset()
     {
         target.setIsHunted(false);
         skinwalkerState = SkinwalkerState.Idle;
