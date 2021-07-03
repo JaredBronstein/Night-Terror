@@ -9,6 +9,7 @@ public class InteractManager : MonoBehaviour
 {
     private bool canInteract = false;
     private GameObject collisionObject;
+    private GManager gManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,11 +23,13 @@ public class InteractManager : MonoBehaviour
 
     private void Awake()
     {
+        gManager = FindObjectOfType<GManager>();
         StartCoroutine(EnableInteraction());
     }
 
     /// <summary>
-    /// If the player is hovering over an interactive object and clicks, interact with it
+    /// If the player is hovering over an interactive object and clicks, interact with it.
+    /// If the player is holding down click over the generator, switch to power up mode
     /// </summary>
     private void Update()
     {
@@ -36,7 +39,12 @@ public class InteractManager : MonoBehaviour
             {
                 collisionObject.GetComponent<InteractiveObject>().Interact();
             }
+            else if (Input.GetButton("Fire1") && collisionObject.tag == "Generator")
+            {
+                gManager.PowerUp();
+            }
         }
+
     }
 
     /// <summary>

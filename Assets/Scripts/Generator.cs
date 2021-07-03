@@ -5,18 +5,18 @@ using UnityEngine;
 /// <summary>
 /// Interactive Object to enable Generator UI for minigame
 /// </summary>
-public class Generator : InteractiveObject
+public class Generator : MonoBehaviour
 {
     private GManager gManager;
+    private bool isBeingPowered = false;
 
     private void Awake()
     {
         gManager = FindObjectOfType<GManager>();
     }
 
-    public override void Interact()
+    public void setIsBeingPowered()
     {
-        base.Interact();
-        gManager.EnableUI();
+
     }
 }
