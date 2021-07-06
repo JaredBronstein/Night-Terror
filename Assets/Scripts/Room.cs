@@ -29,6 +29,7 @@ public class Room : MonoBehaviour
     private float roomHealth = 100;
 
     private bool HasIncense = false;
+    private VisualCue[] visualCues;
     protected bool IsHunted = false;
 
     /// <summary>
@@ -36,6 +37,7 @@ public class Room : MonoBehaviour
     /// </summary>
     protected virtual void Awake()
     {
+        visualCues = GetComponentsInChildren<VisualCue>();
         if(incenseSprite != null)
         {
             incenseSprite.GetComponent<SpriteRenderer>().enabled = false;
@@ -117,10 +119,21 @@ public class Room : MonoBehaviour
     {
         IsHunted = newValue;
         if (newValue)
-            Debug.Log(name + " has been targeted.");
+        {
+            Debug.Log(name + " has been targeted at " +  roomHealth + " health.");
+            foreach (VisualCue visualCue in visualCues)
+            {
+                visualCue.activeState(true);
+            }
+        }
+
         else
         {
             roomHealth = Mathf.Round(roomHealth * 100) / 100;
+            foreach (VisualCue visualCue in visualCues)
+            {
+                visualCue.activeState(false);
+            }
             Debug.Log(name + " is now safe, but it's HP is at " + roomHealth);
         }
     }
