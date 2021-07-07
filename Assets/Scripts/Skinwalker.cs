@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Skinwalker : MonoBehaviour
 {
-    private static float idleTime = 3.0f, huntTime = 3.0f, damagePerSecond = 3.0f, damageMultiplier = 1.0f, audioDelay;
+    private static float idleTime = 3.0f, huntTime = 10.0f, damagePerSecond = 1.0f, damageMultiplier = 1.0f, audioDelay;
 
     [SerializeField]
     [Tooltip("The range in which the Skinwalker will stray from the time set by IdleTime and HuntTime")]
@@ -138,6 +138,11 @@ public class Skinwalker : MonoBehaviour
     public static float getDamagePerSecond()
     {
         return damagePerSecond * damageMultiplier;
+    }
+
+    public Room getHuntedRoom()
+    {
+        return target;
     }
 
     /// <summary>

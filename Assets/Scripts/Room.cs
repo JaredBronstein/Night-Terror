@@ -28,8 +28,15 @@ public class Room : MonoBehaviour
     [SerializeField]
     private float roomHealth = 100;
 
+    [SerializeField]
+    private RoomType.StateOne stateOne;
+
+    [SerializeField]
+    private RoomType.StateTwo stateTwo;
+
     private bool HasIncense = false;
     private VisualCue[] visualCues;
+    private AudioCue[] audioCues;
     protected bool IsHunted = false;
 
     /// <summary>
@@ -38,6 +45,7 @@ public class Room : MonoBehaviour
     protected virtual void Awake()
     {
         visualCues = GetComponentsInChildren<VisualCue>();
+        audioCues = GetComponentsInChildren<AudioCue>();
         if(incenseSprite != null)
         {
             incenseSprite.GetComponent<SpriteRenderer>().enabled = false;
@@ -125,6 +133,10 @@ public class Room : MonoBehaviour
             {
                 visualCue.activeState(true);
             }
+            foreach(AudioCue audioCue in audioCues)
+            {
+                audioCue.activeState(true, this);
+            }
         }
 
         else
@@ -134,7 +146,20 @@ public class Room : MonoBehaviour
             {
                 visualCue.activeState(false);
             }
+            foreach (AudioCue audioCue in audioCues)
+            {
+                audioCue.activeState(false, this);
+            }
             Debug.Log(name + " is now safe, but it's HP is at " + roomHealth);
         }
+    }
+    public RoomType.StateOne GetStateOne()
+    {
+        return stateOne;
+    }
+
+    public RoomType.StateTwo GetStateTwo()
+    {
+        return stateTwo;
     }
 }
